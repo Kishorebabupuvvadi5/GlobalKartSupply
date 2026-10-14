@@ -1,0 +1,449 @@
+
+/* ========================================
+   MODAL OVERLAY
+======================================== */
+
+.gcs-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  overflow: hidden;
+  background: rgba(7, 32, 22, 0.55);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  animation: gcsOverlayIn 180ms ease both;
+}
+
+/* ========================================
+   MODAL CONTAINER
+======================================== */
+
+.gcs-contact-modal,
+.gcs-contact-modal * {
+  box-sizing: border-box;
+}
+
+.gcs-contact-modal {
+  position: relative;
+  width: min(100%, 720px);
+  padding: 30px 36px;
+  color: #193b29;
+  background: #ffffff;
+  border: 1px solid rgba(225, 239, 228, 0.9);
+  border-radius: 22px;
+  box-shadow: 0 28px 100px rgba(0, 30, 18, 0.24);
+  animation: gcsModalIn 220ms ease both;
+
+  /* No scrollbar inside the modal */
+  max-height: none;
+  overflow: visible;
+}
+
+.gcs-contact-modal button,
+.gcs-contact-modal input,
+.gcs-contact-modal select,
+.gcs-contact-modal textarea {
+  font: inherit;
+}
+
+/* ========================================
+   CLOSE BUTTON
+======================================== */
+
+.gcs-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: #587064;
+  background: #f1f7f2;
+  border: 1px solid #e2ece4;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.gcs-modal-close:hover {
+  color: #17623b;
+  background: #e3f3e7;
+}
+
+.gcs-modal-close:focus-visible {
+  outline: 3px solid rgba(40, 125, 73, 0.35);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   MODAL HEADING
+======================================== */
+
+.gcs-modal-top {
+  padding-right: 30px;
+  margin-bottom: 22px;
+}
+
+.gcs-modal-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #27814b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.gcs-modal-top h2 {
+  margin: 0;
+  color: #193b29;
+  font-size: clamp(30px, 4vw, 40px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+}
+
+.gcs-modal-top h2 span {
+  color: #27814b;
+}
+
+.gcs-modal-top p {
+  max-width: 480px;
+  margin: 10px 0 0;
+  color: #708076;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* ========================================
+   FORM GRID
+======================================== */
+
+.gcs-modal-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+}
+
+.gcs-modal-fields label {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 7px;
+  min-width: 0;
+  color: #304638;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Label text and asterisk stay on the same line */
+.gcs-modal-fields .gcs-modal-label-text {
+  display: block;
+  margin: 0;
+  color: #304638;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* Required asterisk */
+.gcs-modal-fields .gcs-required {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  color: #27814b;
+  font-size: inherit;
+  font-weight: 800;
+  line-height: inherit;
+}
+
+/* ========================================
+   INPUTS, SELECT AND TEXTAREA
+======================================== */
+
+.gcs-modal-fields input,
+.gcs-modal-fields select,
+.gcs-modal-fields textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 11px 13px;
+  color: #203b2c;
+  background: #f9fcf9;
+  border: 1px solid #dfe8e1;
+  border-radius: 10px;
+  outline: none;
+  font-size: 13px;
+  font-weight: 400;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.gcs-modal-fields input,
+.gcs-modal-fields select {
+  height: 46px;
+}
+
+.gcs-modal-fields textarea {
+  min-height: 76px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.gcs-modal-fields input::placeholder,
+.gcs-modal-fields textarea::placeholder {
+  color: #a0ada3;
+}
+
+.gcs-modal-fields input:focus,
+.gcs-modal-fields select:focus,
+.gcs-modal-fields textarea:focus {
+  border-color: #48a46b;
+  box-shadow: 0 0 0 3px rgba(47, 144, 80, 0.1);
+}
+
+.gcs-modal-full {
+  grid-column: 1 / -1;
+}
+
+/* ========================================
+   SUBMIT BUTTON
+======================================== */
+
+.gcs-modal-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 18px;
+  padding: 12px 18px;
+  color: #ffffff;
+  background: #287d49;
+  border: 1px solid #287d49;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 750;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.gcs-modal-submit:hover {
+  background: #20683d;
+  transform: translateY(-1px);
+}
+
+.gcs-modal-submit:focus-visible {
+  outline: 3px solid rgba(40, 125, 73, 0.35);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   FORM NOTE
+======================================== */
+
+.gcs-modal-note {
+  margin: 9px 0 0;
+  color: #87958b;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ========================================
+   SUCCESS STATE
+======================================== */
+
+.gcs-modal-success {
+  padding: 20px 0 0;
+  text-align: center;
+}
+
+.gcs-modal-success-icon {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 19px;
+  place-items: center;
+  color: #267d47;
+  background: #eaf7ed;
+  border: 1px solid #d4ebda;
+  border-radius: 50%;
+}
+
+.gcs-modal-success h3 {
+  margin: 0 0 10px;
+  color: #193b29;
+  font-size: 24px;
+}
+
+.gcs-modal-success p {
+  margin: 0 auto;
+  color: #708076;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes gcsOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gcsModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========================================
+   SHORT DESKTOP SCREENS
+======================================== */
+
+@media (max-height: 760px) and (min-width: 561px) {
+  .gcs-contact-modal {
+    padding: 22px 30px;
+  }
+
+  .gcs-modal-top {
+    margin-bottom: 14px;
+  }
+
+  .gcs-modal-top h2 {
+    font-size: 32px;
+  }
+
+  .gcs-modal-top p {
+    margin-top: 7px;
+  }
+
+  .gcs-modal-fields {
+    gap: 10px 15px;
+  }
+
+  .gcs-modal-fields input,
+  .gcs-modal-fields select {
+    height: 40px;
+  }
+
+  .gcs-modal-fields textarea {
+    min-height: 58px;
+  }
+
+  .gcs-modal-submit {
+    min-height: 42px;
+    margin-top: 12px;
+  }
+
+  .gcs-modal-note {
+    margin-top: 6px;
+  }
+}
+
+/* ========================================
+   MOBILE RESPONSIVENESS
+======================================== */
+
+@media (max-width: 560px) {
+  .gcs-modal-overlay {
+    padding: 12px;
+    overflow: hidden;
+  }
+
+  .gcs-contact-modal {
+    width: 100%;
+    padding: 25px 18px 20px;
+    border-radius: 17px;
+  }
+
+  .gcs-modal-close {
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .gcs-modal-top {
+    padding-right: 28px;
+    margin-bottom: 18px;
+  }
+
+  .gcs-modal-label {
+    margin-bottom: 9px;
+    font-size: 10px;
+  }
+
+  .gcs-modal-top h2 {
+    font-size: clamp(27px, 7vw, 32px);
+    letter-spacing: -1px;
+  }
+
+  .gcs-modal-top p {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .gcs-modal-fields {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+
+  .gcs-modal-fields label {
+    gap: 6px;
+  }
+
+  .gcs-modal-fields input,
+  .gcs-modal-fields select {
+    height: 42px;
+  }
+
+  .gcs-modal-fields textarea {
+    min-height: 64px;
+  }
+
+  .gcs-modal-full {
+    grid-column: auto;
+  }
+
+  .gcs-modal-submit {
+    min-height: 44px;
+    margin-top: 14px;
+  }
+
+  .gcs-modal-note {
+    font-size: 9px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .gcs-modal-overlay,
+  .gcs-contact-modal {
+    animation: none;
+  }
+
+  .gcs-contact-modal * {
+    transition: none !important;
+  }
+}

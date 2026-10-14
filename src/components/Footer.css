@@ -1,0 +1,224 @@
+
+.gcs-footer {
+  --footer-green: #7ee0a1;
+  --footer-deep: #062f23;
+  --footer-text: #f4faf5;
+  --footer-muted: #b7c9bd;
+  --footer-border: rgba(221, 245, 228, 0.14);
+
+  width: 100%;
+  background: linear-gradient(135deg, #073b2c 0%, #052b21 100%);
+  color: var(--footer-text);
+  border-top: 1px solid rgba(126, 224, 161, 0.22);
+}
+
+.gcs-footer *,
+.gcs-footer *::before,
+.gcs-footer *::after {
+  box-sizing: border-box;
+}
+
+.gcs-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gcs-footer .section-wrap {
+  width: min(1180px, 90%);
+  margin: 0 auto;
+}
+
+/* Main footer layout */
+.gcs-footer .footer-main {
+  display: grid;
+  grid-template-columns: 1.7fr 0.85fr 0.85fr 1.15fr;
+  gap: 42px;
+  padding: 58px 0 45px;
+}
+
+/* Brand */
+.gcs-footer .footer-brand-col {
+  min-width: 0;
+}
+
+.gcs-footer .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--footer-text);
+}
+
+.gcs-footer .brand-mark {
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  color: #073b2c;
+  background: linear-gradient(135deg, #a3efba, #62ce8b);
+  border-radius: 13px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.gcs-footer .brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.gcs-footer .brand-copy strong {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.gcs-footer .brand-copy small {
+  color: #a7d7b8;
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+}
+
+/* Brand description */
+.gcs-footer .footer-brand-col > p {
+  max-width: 300px;
+  margin: 20px 0 0;
+  color: var(--footer-muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+/* Footer link columns */
+.gcs-footer .footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+}
+
+.gcs-footer .footer-col > strong {
+  margin-bottom: 5px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.gcs-footer .footer-col > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--footer-muted);
+  font-size: 11px;
+  line-height: 1.6;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.gcs-footer .footer-col > a:hover {
+  color: var(--footer-green);
+  transform: translateX(3px);
+}
+
+.gcs-footer .footer-col > a svg {
+  flex-shrink: 0;
+  color: var(--footer-green);
+}
+
+/* Bottom copyright bar */
+.gcs-footer .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 21px 0 24px;
+  border-top: 1px solid var(--footer-border);
+  color: var(--footer-muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.gcs-footer .footer-bottom span {
+  display: block;
+}
+
+/* Keyboard accessibility */
+.gcs-footer a:focus-visible {
+  outline: 2px solid var(--footer-green);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .gcs-footer .footer-main {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .gcs-footer .footer-brand-col {
+    grid-column: 1 / -1;
+  }
+
+  .gcs-footer .footer-brand-col > p {
+    max-width: 430px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .gcs-footer .section-wrap {
+    width: 88%;
+  }
+
+  .gcs-footer .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 22px;
+    padding: 42px 0 32px;
+  }
+
+  .gcs-footer .footer-brand-col {
+    grid-column: 1 / -1;
+  }
+
+  .gcs-footer .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
+
+  .gcs-footer .brand-copy strong {
+    font-size: 14px;
+  }
+
+  .gcs-footer .footer-brand-col > p {
+    margin-top: 15px;
+    font-size: 11px;
+  }
+
+  .gcs-footer .footer-col {
+    gap: 12px;
+  }
+
+  .gcs-footer .footer-col > strong {
+    font-size: 11px;
+  }
+
+  .gcs-footer .footer-col > a {
+    font-size: 10px;
+  }
+
+  .gcs-footer .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 0 22px;
+    font-size: 9px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .gcs-footer .footer-col > a {
+    transition: none;
+  }
+}
