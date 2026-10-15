@@ -28,7 +28,7 @@ export default function Footer() {
             <strong>Explore</strong>
             <Link to="/solutions">Solutions</Link>
             <Link to="/products">Products</Link>
-            <Link to="/calculator">Profit calculator</Link>
+            {/* <Link to="/calculator">Profit calculator</Link> */}
           </div>
 
           <div className="footer-col">

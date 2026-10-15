@@ -9,7 +9,7 @@ import Solutions from "./pages/Solutions.jsx";
 import Products from "./pages/Products.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
 import About from "./pages/About.jsx";
-import Calculator from "./pages/Calculator.jsx";
+// import Calculator from "./pages/Calculator.jsx";
 import Contact from "./pages/Contact.jsx";
 
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/about" element={<About />} />
-        <Route path="/calculator" element={<Calculator />} />
+        {/* <Route path="/calculator" element={<Calculator />} /> */}
         <Route path="/contact" element={<Contact />} />
 
         <Route
