@@ -10,7 +10,7 @@ const links = [
   { label: 'Solutions', to: '/solutions' },
   { label: 'Products', to: '/products' },
   { label: 'About Us', to: '/about' },
-  { label: 'Calculator', to: '/calculator' },
+  // { label: 'Calculator', to: '/calculator' },
   { label: 'Contact', to: '/contact' },
 ]
 

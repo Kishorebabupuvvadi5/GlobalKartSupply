@@ -1,7 +1,12 @@
 
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Package, Search } from "lucide-react";
+import {
+  ArrowUpRight,
+  Package,
+  Search,
+  ArrowRight,
+} from "lucide-react";
 import { categories, products } from "../data/products";
 import "../CSS/Products.css";
 
@@ -16,12 +21,6 @@ const tones = {
   backpack: "blue",
 };
 
-const money = (value) =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(value);
-
 export default function Products() {
   const [category, setCategory] = useState("All products");
   const [query, setQuery] = useState("");
@@ -30,20 +29,22 @@ export default function Products() {
   const filtered = useMemo(() => {
     let list = products.filter((product) => {
       const matchesCategory =
-        category === "All products" || product.category === category;
+        category === "All products" ||
+        product.category === category;
 
       const text =
         `${product.name} ${product.category} ${product.id}`.toLowerCase();
 
-      return matchesCategory && text.includes(query.trim().toLowerCase());
+      return (
+        matchesCategory &&
+        text.includes(query.trim().toLowerCase())
+      );
     });
 
-    if (sort === "low") {
-      list = [...list].sort((a, b) => a.wholesale - b.wholesale);
-    } else if (sort === "high") {
-      list = [...list].sort((a, b) => b.wholesale - a.wholesale);
-    } else if (sort === "name") {
-      list = [...list].sort((a, b) => a.name.localeCompare(b.name));
+    if (sort === "name") {
+      list = [...list].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
     }
 
     return list;
@@ -57,10 +58,12 @@ export default function Products() {
 
   return (
     <main className="products-page">
-      {/* Full-width page hero */}
+      {/* Catalogue hero */}
       <section className="products-hero">
         <div className="products-hero-inner">
-          <div className="eyebrow">PRODUCT CATALOGUE</div>
+          <div className="eyebrow">
+            DISCOVER GLOBAL KART SUPPLY
+          </div>
 
           <h1>
             Discover products.
@@ -69,22 +72,27 @@ export default function Products() {
           </h1>
 
           <p>
-            Search the catalogue, compare illustrative wholesale prices
-            and review sample minimum order quantities.
+            Explore a diverse product range for businesses
+            and individuals. Discover new possibilities
+            through global sourcing.
           </p>
 
           <div className="products-hero-stats">
             <div>
-              <strong>{products.length.toString().padStart(2, "0")}</strong>
-              <span>Sample products</span>
+              <strong>
+                {products.length.toString().padStart(2, "0")}
+              </strong>
+              <span>Products</span>
             </div>
 
             <div className="products-stat-divider" />
 
             <div>
-              <strong>{Math.max(categories.length - 1, 0)
-                .toString()
-                .padStart(2, "0")}</strong>
+              <strong>
+                {Math.max(categories.length - 1, 0)
+                  .toString()
+                  .padStart(2, "0")}
+              </strong>
               <span>Categories</span>
             </div>
 
@@ -92,37 +100,43 @@ export default function Products() {
 
             <div>
               <strong>Global</strong>
-              <span>Sourcing focus</span>
+              <span>Sourcing network</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Full-width catalogue section */}
+      {/* Product catalogue */}
       <section className="product-section">
         <div className="products-container">
-          {/* Section heading */}
+          {/* Catalogue heading */}
           <div className="catalog-heading">
             <div>
-              <span className="catalog-kicker">EXPLORE OUR RANGE</span>
+              <span className="catalog-kicker">
+                OUR PRODUCT COLLECTION
+              </span>
+
               <h2>
-                Find your next <span>product.</span>
+                Find what you <span>need.</span>
               </h2>
+
               <p>
-                Browse the catalogue and explore products for your business
-                or personal requirements.
+                Browse our collection and discover products
+                suited to your business or everyday needs.
               </p>
             </div>
 
             <div className="catalog-result-count">
               <strong>{filtered.length}</strong>
               <span>
-                {filtered.length === 1 ? "product found" : "products found"}
+                {filtered.length === 1
+                  ? "product available"
+                  : "products available"}
               </span>
             </div>
           </div>
 
-          {/* Search and sort */}
+          {/* Search and sorting */}
           <div className="catalog-toolbar">
             <label className="search-field">
               <Search size={18} aria-hidden="true" />
@@ -130,7 +144,9 @@ export default function Products() {
               <input
                 type="search"
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={(event) =>
+                  setQuery(event.target.value)
+                }
                 placeholder="Search products or SKU..."
                 aria-label="Search products or SKU"
               />
@@ -152,12 +168,12 @@ export default function Products() {
 
               <select
                 value={sort}
-                onChange={(event) => setSort(event.target.value)}
+                onChange={(event) =>
+                  setSort(event.target.value)
+                }
                 aria-label="Sort products"
               >
                 <option value="featured">Featured</option>
-                <option value="low">Price: low to high</option>
-                <option value="high">Price: high to low</option>
                 <option value="name">Name</option>
               </select>
             </label>
@@ -165,7 +181,9 @@ export default function Products() {
 
           {/* Category filters */}
           <div className="category-filter-section">
-            <span className="filter-label">CATEGORIES</span>
+            <span className="filter-label">
+              EXPLORE CATEGORIES
+            </span>
 
             <div className="category-row">
               {categories.map((item) => (
@@ -184,11 +202,14 @@ export default function Products() {
             </div>
           </div>
 
-          {/* Product grid */}
+          {/* Products */}
           {filtered.length > 0 ? (
             <div className="product-grid">
               {filtered.map((product) => (
-                <article className="product-card" key={product.id}>
+                <article
+                  className="product-card"
+                  key={product.id}
+                >
                   <Link
                     className="product-art-link"
                     to={`/products/${product.id}`}
@@ -200,7 +221,11 @@ export default function Products() {
                       }`}
                     >
                       <div className="product-art-orbit" />
-                      <Package size={58} strokeWidth={1.15} />
+
+                      <Package
+                        size={58}
+                        strokeWidth={1.15}
+                      />
 
                       {product.badge && (
                         <span className="product-badge">
@@ -208,7 +233,9 @@ export default function Products() {
                         </span>
                       )}
 
-                      <span className="product-art-sku">{product.id}</span>
+                      <span className="product-art-sku">
+                        {product.id}
+                      </span>
                     </div>
                   </Link>
 
@@ -217,7 +244,10 @@ export default function Products() {
                       <span className="product-category-label">
                         {product.category}
                       </span>
-                      <span className="product-sku">{product.id}</span>
+
+                      <span className="product-sku">
+                        {product.id}
+                      </span>
                     </div>
 
                     <h3>
@@ -230,23 +260,11 @@ export default function Products() {
                       {product.description}
                     </p>
 
-                    <div className="product-price-row">
-                      <div className="product-price">
-                        <small>Sample wholesale price</small>
-                        <strong>{money(product.wholesale)}</strong>
-                      </div>
-
-                      <div className="product-moq">
-                        <small>Minimum order</small>
-                        <strong>{product.moq} units</strong>
-                      </div>
-                    </div>
-
                     <Link
                       className="button button-card"
                       to={`/products/${product.id}`}
                     >
-                      View product
+                      Explore product
                       <ArrowUpRight size={16} />
                     </Link>
                   </div>
@@ -263,7 +281,7 @@ export default function Products() {
 
               <p>
                 We couldn't find a product matching your search.
-                Try another keyword or select a different category.
+                Try another keyword or explore a different category.
               </p>
 
               <button
@@ -276,36 +294,44 @@ export default function Products() {
             </div>
           )}
 
-          {/* Catalogue disclaimer */}
+          {/* Catalogue note */}
           <div className="catalog-note">
             <Package size={18} />
 
             <p>
-              <strong>Catalogue information:</strong> This is a sample
-              catalogue. Confirm supplier availability, prices, shipping
-              costs and minimum order quantities before purchasing.
+              <strong>Explore with confidence:</strong> Contact
+              our team to learn more about product availability,
+              specifications, supplier details, and shipping
+              options.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
+      {/* Enquiry call to action */}
       <section className="products-cta">
         <div className="products-cta-inner">
           <div>
-            <span className="catalog-kicker">NEED SOMETHING SPECIFIC?</span>
+            <span className="catalog-kicker">
+              LET'S WORK TOGETHER
+            </span>
+
             <h2>
-              Let's find the right <span>products.</span>
+              Looking for something <span>specific?</span>
             </h2>
+
             <p>
-              Share your product requirements and discuss sourcing options
-              with Global Kart Supply.
+              Tell us what you need. Our team can help you
+              explore products and global sourcing opportunities.
             </p>
           </div>
 
-          <Link className="products-cta-button" to="/contact">
+          <Link
+            className="products-cta-button"
+            to="/contact"
+          >
             Discuss your requirements
-            <ArrowUpRight size={17} />
+            <ArrowRight size={17} />
           </Link>
         </div>
       </section>
